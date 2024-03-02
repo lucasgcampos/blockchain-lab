@@ -22,8 +22,8 @@ anvil -b 15
 
 ```shell
 forge script script/Flipper.s.sol:FlipperScript \
-> --rpc-url "http://127.0.0.1:8545" \
-> --broadcast
+--rpc-url "http://127.0.0.1:8545" \
+--broadcast
 ```
 Verifique se a url está correta, ela vem no log do passo 2.
 
