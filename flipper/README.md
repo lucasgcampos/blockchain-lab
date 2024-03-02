@@ -15,7 +15,7 @@ forge b
 2. Inicialize sua blockchain local
 
 ```shell
-anvil
+anvil -b 15
 ```
 
 3. Enviar o contrato para a blockchain
@@ -47,7 +47,7 @@ cast call --private-key <sua_chave_privada_do_passo_2> \
 #### Teste
 
 ```shell
-$ forge t
+forge t
 ```
 
 ### Ajuda
