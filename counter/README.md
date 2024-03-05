@@ -57,7 +57,7 @@ Adicionar qualquer valor valor:
 ```shell
 cast send \
 --private-key <sua_chave_privada_do_passo_2> \
---rpc-url "http://127.0.0.1:8545" <endereço_do_contrato_passo_3> "setAnyValue(int)" 99
+--rpc-url "http://127.0.0.1:8545" <endereço_do_contrato_passo_3> "setAnyValue(int8)" 99
 ```
 
 #### Teste
