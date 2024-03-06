@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.24;
+pragma solidity ^0.8.19;
 
 contract XDevToken {
 
@@ -18,7 +18,7 @@ contract XDevToken {
         symbol = "XDEV";
         decimals = 8;
         totalSupply = 1000000 * 10e8;
-        balanceOf[msg.sender] = 1000000 * 10e8;
+        balanceOf[msg.sender] = totalSupply;
     }
 
     function transfer(address _to, uint256 _value) public returns (bool success) {
@@ -34,9 +34,7 @@ contract XDevToken {
 
     function transferFrom(address _from, address _to, uint256 _value) public returns (bool success) {
         require(allowance[_from][msg.sender] >= _value, "INSUFFICIENT_ALLOWANCE");
-
-
-        require([msg.sender] >= _value, "INSUFFICIENT_AMOUNT");
+        require(balanceOf[_from] >= _value, "INSUFFICIENT_AMOUNT");
 
         balanceOf[_from] -= _value;
         allowance[_from][msg.sender] -= _value;
@@ -47,10 +45,8 @@ contract XDevToken {
         return true;
     }
 
-    function approve(address _spender, uint256 _value) public returns (bool success) {
-        require(allowance[msg.sender] >= _value, "INSUFFICIENT_AMOUNT");
+    function approve(address _spender, uint256 _value) public returns (bool success) {        
         allowance[msg.sender][_spender] = _value;
-
         emit Approval(msg.sender, _spender, _value);
 
         return true;

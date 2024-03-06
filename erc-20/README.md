@@ -2,7 +2,7 @@
 
 **Exemplo de criação de um Token ERC-20.**
 
-
+![Transfer screen](resources/transfer.png)
 
 ### Como executar?
 
