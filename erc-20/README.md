@@ -23,7 +23,7 @@ a cada 10 segundos um bloco será minerado
 3. Enviar o contrato para a blockchain
 
 ```shell
-forge script script/Counter.s.sol:CounterScript \
+forge script script/XDevToken.s.sol:XDevTokenScript \
 --rpc-url "http://127.0.0.1:8545" \
 --broadcast
 ```
