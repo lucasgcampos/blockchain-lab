@@ -1,6 +1,6 @@
-## Counter
+## ERC-20 - XDev Token
 
-**Exemplo de um smart contract que comunica com a blockchain para aumentar o valor (+1), diminuir o valor (-1) ou configurar uma valor qualquer até 2^8.**
+**Exemplo de criação de um Token ERC-20.**
 
 
 
@@ -28,37 +28,6 @@ forge script script/Counter.s.sol:CounterScript \
 --broadcast
 ```
 Verifique se a url está correta, ela vem no log do passo 2.
-
-
-4. Interagir com o contrato
-
-Consultar valor:
-```shell
-cast call --private-key <sua_chave_privada_do_passo_2> \
---rpc-url "http://127.0.0.1:8545" \
-<endereço_do_contrato_passo_3> "getValue()(int)"
-```
-
-Aumentar o valor:
-```shell
-cast send \
---private-key <sua_chave_privada_do_passo_2> \
---rpc-url "http://127.0.0.1:8545" <endereço_do_contrato_passo_3> "increase()"
-```
-
-Diminuir o valor:
-```shell
-cast send \
---private-key <sua_chave_privada_do_passo_2> \
---rpc-url "http://127.0.0.1:8545" <endereço_do_contrato_passo_3> "decrease()"
-```
-
-Adicionar qualquer valor valor:
-```shell
-cast send \
---private-key <sua_chave_privada_do_passo_2> \
---rpc-url "http://127.0.0.1:8545" <endereço_do_contrato_passo_3> "setAnyValue(int8)" 99
-```
 
 #### Teste
 
