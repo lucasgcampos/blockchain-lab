@@ -13,6 +13,9 @@ contract XDevToken {
     event Transfer(address indexed _from, address indexed  _to, uint256 _value);
     event Approval(address indexed _owner, address indexed _spender, uint256 _value);
 
+    error InsufficientBalance();
+    error InsufficientAllowance();
+
     constructor() {
         name = "XDev Token";
         symbol = "XDEV";
@@ -22,7 +25,9 @@ contract XDevToken {
     }
 
     function transfer(address _to, uint256 _value) public returns (bool success) {
-        require (balanceOf[msg.sender] >= _value, "INSUFFICIENT_AMOUNT");
+        if (balanceOf[msg.sender] < _value) {
+            revert InsufficientBalance();
+        }
         
         balanceOf[msg.sender] -= _value;
         balanceOf[_to] += _value;
@@ -33,8 +38,13 @@ contract XDevToken {
     }
 
     function transferFrom(address _from, address _to, uint256 _value) public returns (bool success) {
-        require(allowance[_from][msg.sender] >= _value, "INSUFFICIENT_ALLOWANCE");
-        require(balanceOf[_from] >= _value, "INSUFFICIENT_AMOUNT");
+        if (allowance[_from][msg.sender] < _value) {
+            revert InsufficientAllowance();
+        }
+        
+        if (balanceOf[_from] < _value) {
+            revert InsufficientBalance();
+        }
 
         balanceOf[_from] -= _value;
         allowance[_from][msg.sender] -= _value;
